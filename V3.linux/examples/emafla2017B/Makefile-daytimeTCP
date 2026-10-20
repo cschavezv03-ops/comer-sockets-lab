@@ -1,0 +1,14 @@
+
+SRVS=TCPdaytimed.o passivesock.o passiveTCP.o errexit.o
+SRVO=TCPdaytimed.o passivesock.o passiveTCP.o errexit.o
+
+CLTS=TCPdaytime.o connectsock.o connectTCP.o errexit.o
+CLTO=TCPdaytime.o connectsock.o connectTCP.o errexit.o
+
+all:	TCPdaytime TCPdaytimed
+
+TCPdaytime:	$(CLTO)
+	cc -o TCPdaytime $(CLTO)
+
+TCPdaytimed:	$(SRVO)
+	cc -o TCPdaytimed $(SRVO)
