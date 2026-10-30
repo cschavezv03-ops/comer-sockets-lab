@@ -31,9 +31,17 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    printf("Status: %d\n", status);
+    printf("Address resolution successful\n");
 
-    freeaddrinfo(res);
+    for(p = res; p != NULL; p = p->ai_next){
+        printf("\nActual node: %p\n", p);
+        printf("Next node: %p\n", p->ai_next);
+        if(p->ai_family == 2){
+            printf("Family IPv4, id = %d\n", p->ai_family);
+        }else{
+            printf("Family IPv6, id = %d\n", p->ai_family);
+        }
+    }
 
     return 0;
 }
